@@ -1,4 +1,4 @@
-# vue3-fundamentals
+# vue3-blog
 
 ## Project setup
 ```
