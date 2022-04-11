@@ -1,14 +1,8 @@
 <template>
   <div>
-    <div>
-      <button @click="addLike" >Like</button>
-      <button @click="addDislike">Dislike</button>
-    </div>
-    <div>
-      Likes Count: <strong>{{ likes }}</strong>
-    </div>
-    <div>
-      Dislikes Count: <strong>{{ dislikes }}</strong>
+    <div class="post">
+      <div><strong>Название:</strong> Пост о JavaScript</div>
+      <div><strong>Описание:</strong> JavaScript is awesome!</div>
     </div>
   </div>
 </template>
@@ -31,6 +25,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
