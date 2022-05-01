@@ -1,7 +1,7 @@
 <template>
   <div class="container mb-3 mt-3">
     <h4>Создание поста</h4>
-    <form class="row">
+    <form class="row" @submit.prevent>
       <div class="mb-3">
         <label for="title" class="form-label w-100">
           Название
@@ -11,6 +11,7 @@
             id="title"
             placeholder="Супер-пост"
             v-bind:value="title"
+            @input="title = $event.target.value"
           >
         </label>
       </div>
@@ -23,6 +24,7 @@
             rows="3"
             placeholder="Очень крутой пост"
             v-bind:value="body"
+            @input="body = $event.target.value"
           ></textarea>
         </label>
       </div>
@@ -46,6 +48,8 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 export default {
   data() {
     return {
@@ -61,7 +65,23 @@ export default {
   },
   methods: {
     createPost() {
+      const newPost = {
+        id: _.uniqueId(),
+        title: this.title,
+        body: this.body,
+      };
+      this.posts = [
+        ...this.posts, newPost,
+      ];
 
+      this.title = '';
+      this.body = '';
+    },
+    synchTitleValue(event) {
+      this.title = event.target.value;
+    },
+    synchBodyValue(event) {
+      this.body = event.target.value;
     },
   },
 };
